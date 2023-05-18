@@ -14,7 +14,8 @@
   --text-color-accent: #f6f6f6;
   --app-title-color: #e9c597;
   --line-color: #e4e4e4;
-  --add-button-color: #38938a;
+  --dark-bl-color: #38938a;
+  --dark-shadow-color: #44a0a0;
 }
 * {
   margin: 0;
@@ -23,8 +24,9 @@
   font-family: var(--primary-font-family);
 }
 .app {
+  padding-top: 80px;
   background: var(--light-page-bg-color);
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,21 +41,32 @@
   font-weight: 800;
   color: var(--app-title-color);
 }
+.tasks-panel {
+  margin-top: 114px;
+  margin-bottom: 252px;
+}
 .left-panel {
   width: 250px;
   height: 520px;
   border-radius: 10px;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .left-panel--light {
   background: var(--light-app-bg-color);
+  box-shadow: 0px 6px var(--dark-bl-color);
 }
 .left-panel--heading {
   width: 250px;
   height: 27px;
-  text-align: center;
   display: flex;
   justify-content: space-between;
   color: var(--primary-text-color);
+  margin-bottom: 46px;
+  font-weight: 600;
+  font-size: 20px;
 }
 .line {
   width: 60px;
@@ -69,6 +82,8 @@
   color: var(--primary-text-color);
   outline: none;
   border: none;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 .button--primary {
   background-color: var(--button-green-color);
@@ -85,6 +100,9 @@
 .button--lb {
   background-color: var(--button-bl-color);
 }
-.short-button {
+.add-button {
+  margin-top: 175px;
   width: 168px;
+  font-weight: 800;
+  background-color: var(--dark-bl-color);
 }
