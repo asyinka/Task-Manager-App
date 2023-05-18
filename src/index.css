@@ -1,0 +1,38 @@
+:root {
+  --button-accent-color: #ff5252;
+  --button-bl-color: #25a7b8;
+  --button-green-color: #4caf50;
+  --button-lo-color: #ffc107;
+  --button-vio-color: #9c27b0;
+  --dark-app-bg-color: #1c273c;
+  --dark-page-bg-color: #354259;
+  --light-app-bg-color: #54bab9;
+  --light-page-bg-color: #f7ecde;
+  --primary-font-family: "Open Sans", sans-serif;
+  --primary-text-color: #ffffff;
+  --task-text-color: #25a7b8;
+  --text-color-accent: #f6f6f6;
+  --app-title-color: #e9c597;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--primary-font-family);
+}
+.app {
+  background: var(--light-page-bg-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.app-title-container {
+  width: 258px;
+  height: 58px;
+  text-align: center;
+}
+.app-title {
+  line-height: 29px;
+  font-weight: 800;
+  color: var(--app-title-color);
+}
