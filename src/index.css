@@ -13,6 +13,8 @@
   --task-text-color: #25a7b8;
   --text-color-accent: #f6f6f6;
   --app-title-color: #e9c597;
+  --line-color: #e4e4e4;
+  --add-button-color: #38938a;
 }
 * {
   margin: 0;
@@ -24,7 +26,8 @@
   background: var(--light-page-bg-color);
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .app-title-container {
   width: 258px;
@@ -35,4 +38,53 @@
   line-height: 29px;
   font-weight: 800;
   color: var(--app-title-color);
+}
+.left-panel {
+  width: 250px;
+  height: 520px;
+  border-radius: 10px;
+}
+.left-panel--light {
+  background: var(--light-app-bg-color);
+}
+.left-panel--heading {
+  width: 250px;
+  height: 27px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  color: var(--primary-text-color);
+}
+.line {
+  width: 60px;
+  height: 0px;
+  background-color: var(--line-color);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.button {
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  color: var(--primary-text-color);
+  outline: none;
+  border: none;
+}
+.button--primary {
+  background-color: var(--button-green-color);
+}
+.button--accent {
+  background-color: var(--button-accent-color);
+}
+.button--secondary {
+  background-color: var(--button-lo-color);
+}
+.button--tertiary {
+  background-color: var(--button-vio-color);
+}
+.button--lb {
+  background-color: var(--button-bl-color);
+}
+.short-button {
+  width: 168px;
 }
