@@ -10,12 +10,16 @@
   --light-page-bg-color: #f7ecde;
   --primary-font-family: "Open Sans", sans-serif;
   --primary-text-color: #ffffff;
+  --secondary-text-color: #1d8a8a;
   --task-text-color: #25a7b8;
   --text-color-accent: #f6f6f6;
   --app-title-color: #e9c597;
   --line-color: #e4e4e4;
   --dark-bl-color: #38938a;
   --dark-shadow-color: #44a0a0;
+  --font-weight-bg: 700;
+  --small-px: 10px;
+  --mid-px: 20px;
 }
 * {
   margin: 0;
@@ -44,17 +48,19 @@
 .tasks-panel {
   margin-top: 114px;
   margin-bottom: 252px;
+  display: flex;
+  gap: 12px;
 }
 .left-panel {
   width: 250px;
   height: 520px;
-  border-radius: 10px;
   padding-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.left-panel--light {
+.panel--light {
+  border-radius: var(--small-px);
   background: var(--light-app-bg-color);
   box-shadow: 0px 6px var(--dark-bl-color);
 }
@@ -78,12 +84,17 @@
 .button {
   width: 200px;
   height: 30px;
-  border-radius: 10px;
+  border-radius: var(--small-px);
   color: var(--primary-text-color);
   outline: none;
   border: none;
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: var(--small-px);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.button:hover {
+  opacity: 0.7;
 }
 .button--primary {
   background-color: var(--button-green-color);
@@ -100,9 +111,36 @@
 .button--lb {
   background-color: var(--button-bl-color);
 }
-.add-button {
+.add-catg-button {
   margin-top: 175px;
   width: 168px;
-  font-weight: 800;
+}
+.button-dark {
   background-color: var(--dark-bl-color);
+  margin-bottom: 0px;
+  font-weight: 800;
+}
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.right-panel-header {
+  width: 650px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.header__item {
+  color: var(--secondary-text-color);
+  font-weight: 700;
+  line-height: 27px;
+  font-size: 20px;
+}
+.right-panel-lists {
+  height: 455px;
+  width: 650px;
 }
