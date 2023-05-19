@@ -93,6 +93,9 @@
   cursor: pointer;
   transition: all 0.2s;
 }
+.short-button {
+  width: 150px;
+}
 .button:hover {
   opacity: 0.7;
 }
@@ -143,4 +146,32 @@
 .right-panel-lists {
   height: 455px;
   width: 650px;
+}
+.listItem {
+  height: 80px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 27px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--primary-text-color);
+  border-bottom: 1px solid var(--line-color);
+}
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: var(--small-px);
+  gap: var(--mid-px);
+  color: var(--secondary-text-color);
+}
+.footer-tag {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 27px;
+}
+.light-footer-tag {
+  color: var(--primary-text-color);
 }
