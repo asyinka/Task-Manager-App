@@ -6,7 +6,7 @@ const RightPanel = () => {
     <div className="right-panel">
       <div className="right-panel-header panel--light">
         <span className="list-number header__item">5 tasks</span>
-        <Button buttonType={"button button-dark"}> Add new task </Button>
+        <Button buttonType={"button button-dark"}>Add new task</Button>
         <span className="header__item">Clear Completed</span>
       </div>
       <div className="right-panel-lists panel--light">

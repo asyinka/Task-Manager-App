@@ -1,5 +1,6 @@
 import "./App.css";
 import LeftPanel from "./components/leftPanel";
+import ModalPanel from "./components/modalPanel";
 import RightPanel from "./components/rightPanel";
 import "./index.css";
 
@@ -11,8 +12,9 @@ function App() {
       </div>
 
       <div className="tasks-panel">
-        <LeftPanel />
-        <RightPanel />
+        {/* <LeftPanel />
+        <RightPanel /> */}
+        <ModalPanel />
       </div>
     </div>
   );
