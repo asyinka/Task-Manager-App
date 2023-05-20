@@ -43,27 +43,38 @@
     display: inline-block;
   }
 }
+/* section: app title */
 .app-title-container {
   width: 258px;
   height: 58px;
   text-align: center;
+}
+@media screen and (max-width: 428px) {
+  .app-title-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .app-title {
   line-height: 29px;
   font-weight: 800;
   color: var(--app-title-color);
 }
+/* task panel section */
 .tasks-panel {
   margin-top: 114px;
   margin-bottom: 252px;
   display: flex;
+  justify-content: center;
   gap: 12px;
+  position: relative;
 }
 @media screen and (max-width: 428px) {
   .tasks-panel {
     margin-top: 52px;
   }
 }
+/* left panel section */
 .left-panel {
   width: 250px;
   height: 520px;
@@ -72,7 +83,7 @@
   flex-direction: column;
   align-items: center;
 }
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 820px) {
   .left-panel {
     display: none;
   }
@@ -99,6 +110,7 @@
   margin-top: auto;
   margin-bottom: auto;
 }
+/* button  */
 .button {
   width: 200px;
   height: 30px;
@@ -150,6 +162,15 @@
   margin-bottom: 0px;
   font-weight: 800;
 }
+@media screen and (max-width: 428px) {
+  .right-panel-lists .short-button {
+    rotate: 90deg;
+    width: 70px;
+    height: 40px;
+    margin: 0;
+  }
+}
+/* section: right panel */
 .right-panel {
   display: flex;
   flex-direction: column;
@@ -227,23 +248,43 @@
 .light-footer-tag {
   color: var(--primary-text-color);
 }
-form {
-  display: none;
-}
+/* form section */
 .app-form {
+  max-width: 500px;
   width: 500px;
   height: 450px;
   padding-top: 22px;
   padding-bottom: 22px;
   position: absolute;
-  top: 287px;
-  left: 470px;
+  top: 40px;
+  left: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   border: 2px solid var(--primary-text-color);
   background: var(--light-app-bg-color);
+}
+@media screen and (max-width: 820px) {
+  .app-form {
+    left: 100px;
+    width: 80%;
+  }
+}
+@media screen and (max-width: 428px) {
+  .app-form {
+    left: 10px;
+    width: 90%;
+  }
+  .app-form .button {
+    width: 120px;
+  }
+  .app-form .form-categories-line {
+    width: 80px;
+  }
+  .app-form .form-input {
+    width: 250px;
+  }
 }
 .modal-panel--display {
   display: none;

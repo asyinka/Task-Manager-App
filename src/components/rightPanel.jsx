@@ -2,11 +2,22 @@ import Button from "./button";
 import ListItem from "./list-item";
 
 const RightPanel = () => {
+  function toggleModalPanel() {
+    const formDisplay = document.querySelector(".app-form");
+
+    formDisplay.classList.toggle("modal-panel--display");
+  }
+
   return (
     <div className="right-panel">
       <div className="right-panel-header panel--light">
         <span className="list-number header__item">5 tasks</span>
-        <Button buttonType={"button button-dark"}>Add new task</Button>
+        <Button
+          handleClickEvent={toggleModalPanel}
+          buttonType={"button button-dark"}
+        >
+          Add new task
+        </Button>
         <span className="header__item">Clear Completed</span>
       </div>
       <div className="right-panel-lists panel--light">
