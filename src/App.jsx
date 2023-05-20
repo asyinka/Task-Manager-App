@@ -12,8 +12,8 @@ function App() {
       </div>
 
       <div className="tasks-panel">
-        {/* <LeftPanel />
-        <RightPanel /> */}
+        <LeftPanel />
+        <RightPanel />
         <ModalPanel />
       </div>
     </div>

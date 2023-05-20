@@ -31,8 +31,8 @@
   padding-top: 80px;
   background: var(--light-page-bg-color);
   height: 100%;
-  max-width: 100%;
-  min-width: 100%;
+  min-width: fit-content;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +48,6 @@
   height: 58px;
   text-align: center;
 }
-
 .app-title {
   line-height: 29px;
   font-weight: 800;
@@ -228,17 +227,26 @@
 .light-footer-tag {
   color: var(--primary-text-color);
 }
+form {
+  display: none;
+}
 .app-form {
   width: 500px;
   height: 450px;
   padding-top: 22px;
   padding-bottom: 22px;
+  position: absolute;
+  top: 287px;
+  left: 470px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   border: 2px solid var(--primary-text-color);
   background: var(--light-app-bg-color);
+}
+.modal-panel--display {
+  display: none;
 }
 .form-title {
   font-weight: 700;

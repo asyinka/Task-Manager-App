@@ -2,7 +2,7 @@ import Button from "./button";
 
 const ModalPanel = () => {
   return (
-    <form className="app-form">
+    <form className="app-form modal-panel--display">
       <h2 className="form-title">CREATE TASK</h2>
       <input
         className="form-input"
