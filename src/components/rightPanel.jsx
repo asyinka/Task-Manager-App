@@ -1,10 +1,9 @@
 import { useState } from "react";
-import toggleMoodal from "../services/toggleModal";
 import Button from "./button";
 import ListItem from "./list-item";
 import ModalPanel from "./modalPanel";
 
-const RightPanel = () => {
+const RightPanel = ({ isDark }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (

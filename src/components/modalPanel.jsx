@@ -2,7 +2,8 @@ import Button from "./button";
 
 const ModalPanel = ({ isModalOpen = false, onCloseModal }) => {
   const handleCloseModalPanel = () => {
-    if (onCloseModal) onCloseModal();
+    // if (onCloseModal) onCloseModal();
+    onCloseModal();
   };
   return (
     <div

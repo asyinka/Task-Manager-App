@@ -1,14 +1,17 @@
 :root {
+  --font-weight-bg: 700;
+  --small-px: 10px;
+  --mid-px: 20px;
+  --primary-font-family: "Open Sans", sans-serif;
+
   --button-accent-color: #ff5252;
   --button-bl-color: #25a7b8;
   --button-green-color: #4caf50;
   --button-lo-color: #ffc107;
   --button-vio-color: #9c27b0;
-  --dark-app-bg-color: #1c273c;
-  --dark-page-bg-color: #354259;
+
   --light-app-bg-color: #54bab9;
   --light-page-bg-color: #f7ecde;
-  --primary-font-family: "Open Sans", sans-serif;
   --primary-text-color: #ffffff;
   --secondary-text-color: #1d8a8a;
   --task-text-color: #25a7b8;
@@ -17,9 +20,10 @@
   --line-color: #e4e4e4;
   --dark-bl-color: #38938a;
   --dark-shadow-color: #44a0a0;
-  --font-weight-bg: 700;
-  --small-px: 10px;
-  --mid-px: 20px;
+}
+[data-theme="dark"] {
+  --light-app-bg-color: #354259;
+  --light-page-bg-color: #1c273c;
 }
 * {
   margin: 0;
@@ -43,6 +47,12 @@
     padding-top: 70px;
     display: inline-block;
   }
+}
+.theme-toggle {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
 }
 /* section: app title */
 .app-title-container {
