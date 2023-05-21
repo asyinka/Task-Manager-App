@@ -1,16 +1,18 @@
+import { useState } from "react";
 import toggleMoodal from "../services/toggleModal";
 import Button from "./button";
 import ListItem from "./list-item";
+import ModalPanel from "./modalPanel";
 
 const RightPanel = () => {
-  const toggleModalPanel = toggleMoodal;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="right-panel">
       <div className="right-panel-header panel--light">
         <span className="list-number header__item">5 tasks</span>
         <Button
-          handleClickEvent={toggleModalPanel}
+          handleClickEvent={() => setIsModalOpen(true)}
           buttonType={"button button-dark"}
         >
           Add new task
@@ -51,6 +53,10 @@ const RightPanel = () => {
           <span className="footer-tag">Completed</span>
         </div>
       </div>
+      <ModalPanel
+        isModalOpen={isModalOpen}
+        onCloseModal={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };
