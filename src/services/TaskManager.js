@@ -1,4 +1,4 @@
-export default ToDoTask = class {
+export default class TaskManager {
   constructor() {
     this.tasksList = [
       {
@@ -22,7 +22,7 @@ export default ToDoTask = class {
   getTasksList() {
     return this.tasksList;
   }
-};
+}
 
 const myToDo = new ToDoTask();
 const myTasksList = () => {

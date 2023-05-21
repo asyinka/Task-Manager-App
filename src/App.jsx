@@ -1,4 +1,5 @@
-import { MdLightbulb, MdStar } from "react-icons/md";
+import { MdSettings, MdStar, MdStarHalf } from "react-icons/md";
+import { FaStarAndCrescent } from "react-icons/fa";
 import "./App.css";
 import LeftPanel from "./components/leftPanel";
 import RightPanel from "./components/rightPanel";
@@ -15,9 +16,9 @@ function App() {
     <div className="app" data-theme={isDark ? "dark" : "light"}>
       <div onClick={handleThemeToggle} className="theme-toggle">
         {!isDark ? (
-          <MdLightbulb size={"24px"} />
+          <MdSettings size={"40px"} />
         ) : (
-          <MdStar size={"24px"} color={"#F7ECDE"} />
+          <FaStarAndCrescent size={"40px"} color={"#F7ECDE"} />
         )}
       </div>
       <div className="app-title-container">
@@ -25,7 +26,7 @@ function App() {
       </div>
 
       <div className="tasks-panel">
-        <LeftPanel isDark={isDark} />
+        <LeftPanel />
         <RightPanel />
       </div>
     </div>

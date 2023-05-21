@@ -1,3 +1,4 @@
+import { MdCancel } from "react-icons/md";
 import Button from "./button";
 
 const ModalPanel = ({ isModalOpen = false, onCloseModal }) => {
@@ -12,7 +13,9 @@ const ModalPanel = ({ isModalOpen = false, onCloseModal }) => {
       }`}
       // onClick={handleCloseModalPanel}
     >
-      <button onClick={handleCloseModalPanel}>close</button>
+      <span onClick={handleCloseModalPanel} className="cancel-panel">
+        <MdCancel size={"28px"} color="#faf6f8d9" />
+      </span>
       <form className="app-form">
         <h2 className="form-title">CREATE TASK</h2>
         <input
