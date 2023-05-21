@@ -1,12 +1,9 @@
+import toggleMoodal from "../services/toggleModal";
 import Button from "./button";
 import ListItem from "./list-item";
 
 const RightPanel = () => {
-  function toggleModalPanel() {
-    const formDisplay = document.querySelector(".app-form");
-
-    formDisplay.classList.toggle("modal-panel--display");
-  }
+  const toggleModalPanel = toggleMoodal;
 
   return (
     <div className="right-panel">
