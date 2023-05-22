@@ -12,6 +12,12 @@ const RightPanel = () => {
   const [taskInput, setTaskInput] = useState("");
   const [tasksLists, setTasksList] = useState([]);
 
+  const handleDeleteTask = (task) => {
+    myTaskManager.deleteTask(task);
+
+    fetchTasks();
+  };
+
   const handleFormSubmission = (e) => {
     e.preventDefault();
 
@@ -63,6 +69,7 @@ const RightPanel = () => {
                 task={task.description}
                 taskStatus={"Completed"}
                 key={index}
+                handleDeleteTask={handleDeleteTask}
               />
             ))}
 

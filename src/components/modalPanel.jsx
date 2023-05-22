@@ -1,5 +1,4 @@
 import { MdCancel } from "react-icons/md";
-import Button from "./button";
 
 const ModalPanel = ({
   isModalOpen = false,
@@ -33,12 +32,17 @@ const ModalPanel = ({
           <hr className="line form-categories-line" /> Categories
           <hr className="line form-categories-line" />
         </div>
-        <div className="form-categories-button">
-          <Button buttonType={"button button--accent"}> Urgent </Button>
-          <Button buttonType={"button button--secondary"}> Important </Button>
-          <Button buttonType={"button button--tertiary"}> Later </Button>
-          <Button buttonType={"button button--lb"}> To study </Button>
-          <Button buttonType={"button button--primary"}>Completed </Button>
+        <div className="form-categories-tag-cont">
+          {/* the button className used in this div is simply to copy the styles used for the button to follow the DRY rule */}
+          <span className={"category-tag button button--accent"}> Urgent </span>
+          <span className={"category-tag button button--secondary"}>
+            Important
+          </span>
+          <span className={"category-tag button button--tertiary"}>Later</span>
+          <span className={"category-tag button button--lb"}> To study </span>
+          <span onclic className={"category-tag button button--primary"}>
+            Completed
+          </span>
         </div>
         <button onClick={handleFormSubmission} className="form-button button">
           Submit task

@@ -1,13 +1,7 @@
 export default class TaskManager {
   constructor() {
-    this.tasksList = [
-      {
-        description: "swim at the beach",
-        id: 1,
-        status: false,
-      },
-    ];
-    this.lastId = 1;
+    this.tasksList = [];
+    this.lastId = 0;
   }
   createTask(description) {
     const task = {
@@ -18,6 +12,13 @@ export default class TaskManager {
     this.tasksList.push(task);
   }
   getTasksList() {
+    return this.tasksList;
+  }
+  deleteTask(task) {
+    const taskIndex = this.tasksList.indexOf(task);
+
+    this.tasksList.splice(taskIndex, 1);
+
     return this.tasksList;
   }
 }
