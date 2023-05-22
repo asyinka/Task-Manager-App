@@ -50,7 +50,7 @@
 }
 .theme-toggle {
   position: absolute;
-  top: 50px;
+  top: 10px;
   right: 50px;
   cursor: pointer;
 }
@@ -78,6 +78,15 @@
   display: flex;
   justify-content: center;
   gap: 12px;
+}
+.panel-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.panel-empty p {
+  font-size: 24px;
 }
 @media screen and (max-width: 428px) {
   .tasks-panel {
@@ -219,6 +228,10 @@
   height: 455px;
   width: 650px;
 }
+.tasks-lists {
+  overflow: auto;
+  height: 400px;
+}
 @media screen and (max-width: 428px) {
   .right-panel-lists {
     width: 300px;
@@ -272,7 +285,6 @@
   border: 2px solid var(--primary-text-color);
   background: var(--light-app-bg-color);
 }
-
 .modal-panel--display {
   display: flex;
 }

@@ -1,17 +1,21 @@
 import { MdCancel } from "react-icons/md";
 import Button from "./button";
 
-const ModalPanel = ({ isModalOpen = false, onCloseModal }) => {
+const ModalPanel = ({
+  isModalOpen = false,
+  onCloseModal,
+  handleFormSubmission,
+  taskInput,
+  setTaskInput,
+}) => {
   const handleCloseModalPanel = () => {
-    // if (onCloseModal) onCloseModal();
-    onCloseModal();
+    if (onCloseModal) onCloseModal();
   };
   return (
     <div
       className={`form-background ${
         isModalOpen ? "modal-panel--display" : "modal-panel--hide"
       }`}
-      // onClick={handleCloseModalPanel}
     >
       <span onClick={handleCloseModalPanel} className="cancel-panel">
         <MdCancel size={"28px"} color="#faf6f8d9" />
@@ -22,6 +26,8 @@ const ModalPanel = ({ isModalOpen = false, onCloseModal }) => {
           className="form-input"
           type="text"
           placeholder="Task description..."
+          value={taskInput}
+          onChange={setTaskInput}
         />
         <div className="form-categories">
           <hr className="line form-categories-line" /> Categories
@@ -34,7 +40,9 @@ const ModalPanel = ({ isModalOpen = false, onCloseModal }) => {
           <Button buttonType={"button button--lb"}> To study </Button>
           <Button buttonType={"button button--primary"}>Completed </Button>
         </div>
-        <button className="form-button button">Submit task</button>
+        <button onClick={handleFormSubmission} className="form-button button">
+          Submit task
+        </button>
       </form>
     </div>
   );

@@ -1,5 +1,4 @@
-import { MdSettings, MdStar, MdStarHalf } from "react-icons/md";
-import { FaStarAndCrescent } from "react-icons/fa";
+import { FaStarAndCrescent, FaStarOfDavid } from "react-icons/fa";
 import "./App.css";
 import LeftPanel from "./components/leftPanel";
 import RightPanel from "./components/rightPanel";
@@ -12,11 +11,12 @@ function App() {
   const handleThemeToggle = () => {
     setIsDark(!isDark);
   };
+
   return (
     <div className="app" data-theme={isDark ? "dark" : "light"}>
       <div onClick={handleThemeToggle} className="theme-toggle">
         {!isDark ? (
-          <MdSettings size={"40px"} />
+          <FaStarOfDavid size={"40px"} />
         ) : (
           <FaStarAndCrescent size={"40px"} color={"#F7ECDE"} />
         )}
