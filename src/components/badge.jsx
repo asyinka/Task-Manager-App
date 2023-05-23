@@ -1,4 +1,6 @@
-const Badge = ({ category, tagType }) => {
+import { MdCheckCircleOutline } from "react-icons/md";
+
+const Badge = ({ category, tagType, showIcon = false }) => {
   switch (category) {
     case "Urgent":
       tagType = "button--accent";
@@ -22,7 +24,11 @@ const Badge = ({ category, tagType }) => {
   {
     /* the button className used in this div is simply to copy the styles used for the button to follow the DRY rule */
   }
-  return <span className={`category-tag button ${tagType}`}>{category}</span>;
+  return (
+    <div className={`category-tag button ${tagType}`}>
+      {category} {showIcon && <MdCheckCircleOutline />}
+    </div>
+  );
 };
 
 export default Badge;
