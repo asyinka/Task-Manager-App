@@ -8,7 +8,7 @@
 
 **_Markup:_** HTML, JSX
 
-**_programming language:_** REACT.js(JavaScript)
+**_programming language:_** REACT.js(JavaScript), Vanilla JavaScript
 
 **_styling:_** CSS
 
