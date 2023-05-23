@@ -3,14 +3,24 @@ import Button from "./button";
 import ListItem from "./list-item";
 import ModalPanel from "./modalPanel";
 import TaskManager from "../services/TaskManager";
-import { MdLaptop } from "react-icons/md";
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
 
 const myTaskManager = new TaskManager();
+
+const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
 
 const RightPanel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [taskInput, setTaskInput] = useState("");
   const [tasksLists, setTasksList] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
+  const [category, setCateory] = useState();
+
+  const toggleCheck = (id) => {
+    setIsChecked(!isChecked);
+
+    myTaskManager.toggleTaskStatus(id);
+  };
 
   const handleDeleteTask = (task) => {
     myTaskManager.deleteTask(task);
@@ -57,7 +67,7 @@ const RightPanel = () => {
       </div>
       {tasksLists.length == 0 ? (
         <div className="right-panel-lists panel--light panel-empty">
-          <MdLaptop size={"140px"} color="#1f1d1be8" />
+          <MdCheckBoxOutlineBlank size={"140px"} color="#1f1d1be8" />
           <p>You have no item on your list</p>
         </div>
       ) : (
@@ -65,11 +75,13 @@ const RightPanel = () => {
           <div className="tasks-lists">
             {tasksLists.map((task, index) => (
               <ListItem
-                buttonType={"button short-button button--primary"}
+                buttonType={`button short-button button--primary`}
                 task={task.description}
                 taskStatus={"Completed"}
                 key={index}
-                handleDeleteTask={handleDeleteTask}
+                handleDeleteTask={() => handleDeleteTask(task)}
+                toggleCheck={() => toggleCheck(task.id)}
+                isChecked={isChecked}
               />
             ))}
 

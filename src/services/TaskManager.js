@@ -7,12 +7,22 @@ export default class TaskManager {
     const task = {
       description: description,
       id: ++this.lastId,
-      status: false,
+      isCompleted: false,
     };
     this.tasksList.push(task);
   }
   getTasksList() {
+    console.log(this.tasksList);
     return this.tasksList;
+  }
+  toggleTaskStatus(id) {
+    const taskIndex = this.tasksList.findIndex((task) => task.id === id);
+
+    if (taskIndex == -1) throw new Error("Task not found");
+
+    const foundTask = this.tasksList[taskIndex];
+
+    foundTask.isCompleted = !foundTask.isCompleted;
   }
   deleteTask(task) {
     const taskIndex = this.tasksList.indexOf(task);
