@@ -1,14 +1,6 @@
 import { MdDeleteOutline } from "react-icons/md";
-import Button from "./button";
 
-const ListItem = ({
-  task,
-  taskStatus,
-  buttonType,
-  handleDeleteTask,
-  isChecked,
-  toggleCheck,
-}) => {
+const ListItem = ({ task, handleDeleteTask, toggleCheck, badge }) => {
   return (
     <div className="listItem">
       <input type="checkbox" onChange={toggleCheck} className="check-icon" />
@@ -16,7 +8,7 @@ const ListItem = ({
       <span onClick={handleDeleteTask}>
         <MdDeleteOutline color="gray" size={"24px"} />
       </span>
-      <Button buttonType={buttonType}>{taskStatus}</Button>
+      {badge}
     </div>
   );
 };

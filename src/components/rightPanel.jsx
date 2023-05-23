@@ -4,6 +4,7 @@ import ListItem from "./list-item";
 import ModalPanel from "./modalPanel";
 import TaskManager from "../services/TaskManager";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
+import Badge from "./badge";
 
 const myTaskManager = new TaskManager();
 
@@ -76,6 +77,7 @@ const RightPanel = () => {
             {tasksLists.map((task, index) => (
               <ListItem
                 buttonType={`button short-button button--primary`}
+                badge={<Badge />}
                 task={task.description}
                 taskStatus={"Completed"}
                 key={index}
@@ -84,32 +86,6 @@ const RightPanel = () => {
                 isChecked={isChecked}
               />
             ))}
-
-            {/* { <ListItem
-              buttonType={"button short-button button--primary"}
-              task={"Memorize the fifty states and their capitals"}
-              taskStatus={"Completed"}
-            />
-            <ListItem
-              buttonType={"button short-button button--accent"}
-              task={"Memorize the fifty states and their capitals"}
-              taskStatus={"Urgent"}
-            />
-            <ListItem
-              buttonType={"button short-button button--secondary"}
-              task={"Memorize the fifty states and their capitals"}
-              taskStatus={"Important"}
-            />
-            <ListItem
-              buttonType={"button short-button button--tertiary"}
-              task={"Memorize the fifty states and their capitals"}
-              taskStatus={"Later"}
-            />
-            <ListItem
-              buttonType={"button short-button button--lb"}
-              task={"Memorize the fifty states and their capitals"}
-              taskStatus={"To study"} }
-            />  */}
           </div>
           <div className="footer">
             <span className="footer-tag">Active</span>

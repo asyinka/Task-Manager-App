@@ -17,7 +17,9 @@ const ModalPanel = ({
     if (onCloseModal) onCloseModal();
   };
 
-  // const [category, setCategory] = useState();
+  const [showIcon, setShowIcon] = useState(false);
+
+  const [category, setCategory] = useState();
   return (
     <div
       className={`form-background ${
@@ -41,8 +43,19 @@ const ModalPanel = ({
           <hr className="line form-categories-line" />
         </div>
         <div className="form-categories-tag-cont">
-          {categories.map((category) => (
-            <Badge category={category} tagType={tagType} />
+          {categories.map((curCategory) => (
+            <div
+              key={curCategory}
+              onClick={() => {
+                setCategory(curCategory);
+              }}
+            >
+              <Badge
+                category={curCategory}
+                tagType={tagType}
+                showIcon={category == curCategory ? true : false}
+              />
+            </div>
           ))}
         </div>
         <button onClick={handleFormSubmission} className="form-button button">
