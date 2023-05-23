@@ -4,6 +4,7 @@ import LeftPanel from "./components/leftPanel";
 import RightPanel from "./components/rightPanel";
 import "./index.css";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -29,6 +30,7 @@ function App() {
         <LeftPanel />
         <RightPanel />
       </div>
+      <ToastContainer />
     </div>
   );
 }

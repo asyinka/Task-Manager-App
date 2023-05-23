@@ -5,7 +5,8 @@ import ModalPanel from "./modalPanel";
 import TaskManager from "../services/TaskManager";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import Badge from "./badge";
-
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 const myTaskManager = new TaskManager();
 
 const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
@@ -33,7 +34,7 @@ const RightPanel = () => {
     e.preventDefault();
 
     if (taskInput == "" || taskInput == " ") {
-      alert("You have to add a task");
+      toast("You have to add a task", { position: "top-center" });
       return;
     }
 
