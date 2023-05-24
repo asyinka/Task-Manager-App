@@ -13,10 +13,11 @@ const ModalPanel = ({
   taskInput,
   setTaskInput,
 }) => {
+  //this handles the display of the modal panel
   const handleCloseModalPanel = () => {
     if (onCloseModal) onCloseModal();
   };
-
+  //handles the useState of my showIcon
   const [showIcon, setShowIcon] = useState(false);
 
   const [category, setCategory] = useState();
