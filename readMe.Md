@@ -42,7 +42,8 @@ So far, the App can:
 
 ## To be addressed
 
-- Set input to take atleast a word.
+- ~~Set input to take atleast a word~~ - This is issue is fixed
+- properly style the U.I to taste
 
 </Article>
 
