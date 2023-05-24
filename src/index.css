@@ -182,10 +182,10 @@
   font-weight: 800;
 }
 @media screen and (max-width: 428px) {
-  .right-panel-lists .short-button {
+  .tasks-lists .category-tag {
     rotate: 90deg;
-    width: 70px;
-    height: 40px;
+    max-width: 60px;
+    height: fit-content;
     margin: 0;
   }
 }

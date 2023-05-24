@@ -40,6 +40,10 @@ So far, the App can:
     4. Display only active tasks or only completed tasks or all tasks when clicked respectively
     5. Edit a task
 
+## To be addressed
+
+- Set input to take atleast a word.
+
 </Article>
 
 ## packages used in the app

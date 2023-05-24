@@ -11,13 +11,17 @@ const myTaskManager = new TaskManager();
 
 const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
 
+let tagType = "";
+
 const RightPanel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [taskInput, setTaskInput] = useState("");
   const [tasksLists, setTasksList] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
-  const [category, setCateory] = useState();
+  const [category, setCategory] = useState();
+  // const [showIcon, setShowIcon] = useState(false);
 
+  //this toggles the status of the task whether completed or not
   const toggleCheck = (id) => {
     setIsChecked(!isChecked);
 
@@ -32,20 +36,24 @@ const RightPanel = () => {
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
-
-    if (taskInput == "" || taskInput == " ") {
-      toast("You have to add a task", { position: "top-center" });
+    //set the input to always contain atleast a word
+    if (taskInput.length < 2 || category == null) {
+      toast("You have to add a task and category", { position: "top-left" });
       return;
     }
 
     setIsModalOpen(false);
 
-    myTaskManager.createTask(taskInput);
+    myTaskManager.createTask(taskInput, category);
 
     setTaskInput("");
 
     fetchTasks();
   };
+
+  // function setShowIcon(currCat) {
+  //   category == currCat ? true : false;
+  // }
 
   const fetchTasks = () => {
     const myTaskLists = myTaskManager.getTasksList();
@@ -77,10 +85,9 @@ const RightPanel = () => {
           <div className="tasks-lists">
             {tasksLists.map((task, index) => (
               <ListItem
-                buttonType={`button short-button button--primary`}
-                badge={<Badge />}
-                task={task.description}
-                taskStatus={"Completed"}
+                // buttonType={`button short-button button--primary`}
+                badge={<Badge category={task.category} tagType={tagType} />}
+                taskDescription={task.description}
                 key={index}
                 handleDeleteTask={() => handleDeleteTask(task)}
                 toggleCheck={() => toggleCheck(task.id)}
@@ -97,6 +104,10 @@ const RightPanel = () => {
       )}
       <ModalPanel
         isModalOpen={isModalOpen}
+        categories={categories}
+        category={category}
+        setCategory={setCategory}
+        tagType={tagType}
         onCloseModal={() => setIsModalOpen(false)}
         handleFormSubmission={handleFormSubmission}
         setTaskInput={(e) => {

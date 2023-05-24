@@ -2,25 +2,24 @@ import { useState } from "react";
 import { MdCancel } from "react-icons/md";
 import Badge from "./badge";
 
-const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
-
-let tagType = "";
-
 const ModalPanel = ({
   isModalOpen = false,
   onCloseModal,
   handleFormSubmission,
   taskInput,
   setTaskInput,
+  categories,
+  tagType,
+  setCategory,
+  category,
 }) => {
   //this handles the display of the modal panel
   const handleCloseModalPanel = () => {
     if (onCloseModal) onCloseModal();
   };
   //handles the useState of my showIcon
-  const [showIcon, setShowIcon] = useState(false);
+  // const [showIcon, setShowIcon] = useState(false);
 
-  const [category, setCategory] = useState();
   return (
     <div
       className={`form-background ${
