@@ -3,11 +3,12 @@ export default class TaskManager {
     this.tasksList = [];
     this.lastId = 0;
   }
-  createTask(description) {
+  createTask(description, category) {
     const task = {
       description: description,
       id: ++this.lastId,
       isCompleted: false,
+      category: category,
     };
     this.tasksList.push(task);
   }
