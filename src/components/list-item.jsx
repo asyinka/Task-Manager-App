@@ -11,7 +11,7 @@ const ListItem = ({
       <input type="checkbox" onChange={toggleCheck} className="check-icon" />
       <p>{taskDescription}</p>
       <span onClick={handleDeleteTask}>
-        <MdDeleteOutline color="gray" size={"24px"} />
+        <MdDeleteOutline color="crimson" size={"24px"} />
       </span>
       {badge}
     </div>

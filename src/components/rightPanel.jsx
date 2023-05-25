@@ -19,11 +19,25 @@ const RightPanel = () => {
   const [tasksLists, setTasksList] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
   const [category, setCategory] = useState();
-  // const [showIcon, setShowIcon] = useState(false);
+
+  const displayActiveTask = () => {
+    //accept uncompleted arrays and pass it into the tasksList
+    const unCompletedTasks = myTaskManager.filterUncompletedTask();
+
+    setTasksList([...unCompletedTasks]);
+  };
+
+  const displayCompletedTasks = () => {
+    const completedTasks = myTaskManager.filterCompletedTask();
+
+    setTasksList([...completedTasks]);
+  };
 
   //this toggles the status of the task whether completed or not
   const toggleCheck = (id) => {
     setIsChecked(!isChecked);
+    //debug
+    // console.log(tasksLists);
 
     myTaskManager.toggleTaskStatus(id);
   };
@@ -31,12 +45,12 @@ const RightPanel = () => {
   const handleDeleteTask = (task) => {
     myTaskManager.deleteTask(task);
 
-    fetchTasks();
+    fetchAllTasks();
   };
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    //set the input to always contain atleast a word
+    //set the input to always contain atleast a word and pick a category
     if (taskInput.length < 2 || category == null) {
       toast("You have to add a task and category", { position: "top-left" });
       return;
@@ -48,17 +62,21 @@ const RightPanel = () => {
 
     setTaskInput("");
 
-    fetchTasks();
+    fetchAllTasks();
   };
 
   // function setShowIcon(currCat) {
   //   category == currCat ? true : false;
   // }
 
-  const fetchTasks = () => {
+  const fetchAllTasks = () => {
     const myTaskLists = myTaskManager.getTasksList();
 
+    // console.log(myTaskLists);
+
     setTasksList([...myTaskLists]);
+
+    // console.log(myTaskLists);
   };
 
   return (
@@ -75,33 +93,40 @@ const RightPanel = () => {
         </Button>
         <span className="header__item">Clear Completed</span>
       </div>
-      {tasksLists.length == 0 ? (
-        <div className="right-panel-lists panel--light panel-empty">
-          <MdCheckBoxOutlineBlank size={"140px"} color="#1f1d1be8" />
-          <p>You have no item on your list</p>
-        </div>
-      ) : (
-        <div className="right-panel-lists panel--light">
-          <div className="tasks-lists">
-            {tasksLists.map((task, index) => (
-              <ListItem
-                // buttonType={`button short-button button--primary`}
-                badge={<Badge category={task.category} tagType={tagType} />}
-                taskDescription={task.description}
-                key={index}
-                handleDeleteTask={() => handleDeleteTask(task)}
-                toggleCheck={() => toggleCheck(task.id)}
-                isChecked={isChecked}
-              />
-            ))}
+      <div className="right-panel-lists panel--light">
+        {tasksLists.length == 0 ? (
+          <div className="tasks-lists panel-empty">
+            <MdCheckBoxOutlineBlank size={"140px"} color="#1f1d1be8" />
+            <p>You have no item on your list</p>
           </div>
-          <div className="footer">
-            <span className="footer-tag">Active</span>
-            <span className="footer-tag light-footer-tag">All</span>
-            <span className="footer-tag">Completed</span>
+        ) : (
+          <div>
+            <div className="tasks-lists">
+              {tasksLists.map((task, index) => (
+                <ListItem
+                  badge={<Badge category={task.category} tagType={tagType} />}
+                  taskDescription={task.description}
+                  key={index}
+                  handleDeleteTask={() => handleDeleteTask(task)}
+                  toggleCheck={() => toggleCheck(task.id)}
+                  isChecked={isChecked}
+                />
+              ))}
+            </div>
           </div>
+        )}
+        <div className="footer">
+          <span onClick={displayActiveTask} className="footer-tag">
+            Active
+          </span>
+          <span onClick={fetchAllTasks} className="footer-tag light-footer-tag">
+            All
+          </span>
+          <span onClick={displayCompletedTasks} className="footer-tag">
+            Completed
+          </span>
         </div>
-      )}
+      </div>
       <ModalPanel
         isModalOpen={isModalOpen}
         categories={categories}

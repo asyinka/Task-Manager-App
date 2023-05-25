@@ -29,21 +29,28 @@ So far, the App can:
     4. Mark task category on the form
     5. Display a modular (form) to enter task
     6. Display number of task(s)
+    7. Display task category
 
 ## Features to be added
 
     Part of the App still to be added for completion:
 
-    1. Display task category on the right panel
-    2. Mark a task as completed
-    3. Clear completed task
-    4. Display only active tasks or only completed tasks or all tasks when clicked respectively
-    5. Edit a task
+    1. ~~Display task category on the right panel~~ -[x]
+
+    1. Clear completed task
+    2. Edit a task
+
+    issues:
+    - Display only active tasks or only completed tasks or all tasks when clicked respectively -[]
+    - `Mark a task as completed` -[]
 
 ## To be addressed
 
-- ~~Set input to take atleast a word~~ - This is issue is fixed
+- ~~Set input to take atleast a word~~ - [x]
 - properly style the U.I to taste
+- when modal panel is cancel or submitted, the input and category must be cleared
+- The checkbox becomes unchecked after re-rendering. Even though the isCompleted property remians true.
+-
 
 </Article>
 

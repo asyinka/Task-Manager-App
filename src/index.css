@@ -267,6 +267,10 @@
   font-weight: 800;
   font-size: 20px;
   line-height: 27px;
+  cursor: pointer;
+}
+.footer-tag ::content {
+  color: var(--primary-text-color);
 }
 .light-footer-tag {
   color: var(--primary-text-color);
