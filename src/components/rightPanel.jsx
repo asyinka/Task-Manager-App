@@ -7,9 +7,11 @@ import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import Badge from "./badge";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
-const myTaskManager = new TaskManager();
+import FooterTag from "../services/footerTag";
+const myTaskManager = new TaskManager("");
 
 const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
+const footerTags = ["Active", "All", "Completed"];
 
 let tagType = "";
 
@@ -17,8 +19,8 @@ const RightPanel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [taskInput, setTaskInput] = useState("");
   const [tasksLists, setTasksList] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
   const [category, setCategory] = useState();
+  const [footerFontColor, setFooterFontColor] = useState();
 
   const displayActiveTask = () => {
     //accept uncompleted arrays and pass it into the tasksList
@@ -34,12 +36,13 @@ const RightPanel = () => {
   };
 
   //this toggles the status of the task whether completed or not
+  //is checked is set to true pending when checkBox is resolved
   const toggleCheck = (id) => {
-    setIsChecked(!isChecked);
     //debug
     // console.log(tasksLists);
 
     myTaskManager.toggleTaskStatus(id);
+    fetchAllTasks();
   };
 
   const handleDeleteTask = (task) => {
@@ -51,8 +54,10 @@ const RightPanel = () => {
   const handleFormSubmission = (e) => {
     e.preventDefault();
     //set the input to always contain atleast a word and pick a category
-    if (taskInput.length < 2 || category == null) {
-      toast("You have to add a task and category", { position: "top-left" });
+    if (taskInput.length < 2 || category == "") {
+      toast("You have to add a valid task and category", {
+        position: "top-left",
+      });
       return;
     }
 
@@ -61,6 +66,8 @@ const RightPanel = () => {
     myTaskManager.createTask(taskInput, category);
 
     setTaskInput("");
+
+    setCategory("");
 
     fetchAllTasks();
   };
@@ -83,7 +90,9 @@ const RightPanel = () => {
     <div className="right-panel">
       <div className="right-panel-header panel--light">
         <span className="list-number header__item">
-          {tasksLists.length == 0 ? "No tasks" : tasksLists.length + " tasks"}
+          {tasksLists.length == 0
+            ? "No task"
+            : tasksLists.length + (tasksLists.length <= 1 ? " task" : " tasks")}
         </span>
         <Button
           handleClickEvent={() => setIsModalOpen(true)}
@@ -105,17 +114,17 @@ const RightPanel = () => {
               {tasksLists.map((task, index) => (
                 <ListItem
                   badge={<Badge category={task.category} tagType={tagType} />}
+                  taskStatus={task.isCompleted}
                   taskDescription={task.description}
                   key={index}
                   handleDeleteTask={() => handleDeleteTask(task)}
                   toggleCheck={() => toggleCheck(task.id)}
-                  isChecked={isChecked}
                 />
               ))}
             </div>
           </div>
         )}
-        <div className="footer">
+        {/* <div className="footer">
           <span onClick={displayActiveTask} className="footer-tag">
             Active
           </span>
@@ -125,6 +134,27 @@ const RightPanel = () => {
           <span onClick={displayCompletedTasks} className="footer-tag">
             Completed
           </span>
+        </div> */}
+        <div className="footer">
+          {footerTags.map((tag) => (
+            <span key={tag} onClick={() => setFooterFontColor(true)}>
+              <FooterTag
+                displayActiveTask={displayActiveTask}
+                displayCompletedTasks={displayCompletedTasks}
+                fetchAllTasks={fetchAllTasks}
+                footerFontColor={footerFontColor}
+              >
+                {tag}
+              </FooterTag>
+            </span>
+          ))}
+
+          {/* <FooterTag onTagClick={fetchAllTasks} footerTag={footerTag}>
+            All
+          </FooterTag>
+          <FooterTag onTagClick={displayCompletedTasks} footerTag={footerTag}>
+            Completed
+          </FooterTag> */}
         </div>
       </div>
       <ModalPanel

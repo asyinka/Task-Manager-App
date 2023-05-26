@@ -1,8 +1,8 @@
 # Task-Manager-App
 
-<p>
+<header>
 
-**_Aim:_** This project is aimed at building a real world app that can be used to manage and schedule tasks </p>
+**_Aim:_** This project is aimed at building a real world app that can be used to manage and schedule tasks
 
 **_Build:_** This project was built using VScode editor.
 
@@ -10,11 +10,15 @@
 
 **_programming language:_** REACT.js(JavaScript), Vanilla JavaScript
 
-**_styling:_** CSS
+**_styling:_** Plain CSS
 
 **_scaffold:_** Vite
 
+**_Alert:_** React toastify
+
 <!-- {**_Timeline:_** Two - Three weeks.} -->
+
+</header>
 
 <Article>
 This is a Task Manager web application.
@@ -30,27 +34,28 @@ So far, the App can:
     5. Display a modular (form) to enter task
     6. Display number of task(s)
     7. Display task category
+    8. Display only active tasks or only completed tasks or all tasks when clicked respectively
+    9. Mark a task as completed -[x]
 
 ## Features to be added
 
     Part of the App still to be added for completion:
 
-    1. ~~Display task category on the right panel~~ -[x]
+     ~~Display task category on the right panel~~ -[x]
 
     1. Clear completed task
     2. Edit a task
 
-    issues:
-    - Display only active tasks or only completed tasks or all tasks when clicked respectively -[]
-    - `Mark a task as completed` -[]
+## Problems/issues
+
+    - Font color for the footer text such that only the color of the clicked footer is changed
+    - The checkbox keps taking the state of the first task either checked or unchecked after clicking the footer
+    - when modal panel is cancel, the input and category isn't cleared
 
 ## To be addressed
 
 - ~~Set input to take atleast a word~~ - [x]
 - properly style the U.I to taste
-- when modal panel is cancel or submitted, the input and category must be cleared
-- The checkbox becomes unchecked after re-rendering. Even though the isCompleted property remians true.
--
 
 </Article>
 

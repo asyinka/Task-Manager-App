@@ -13,6 +13,8 @@ const ModalPanel = ({
 }) => {
   //this handles the display of the modal panel
   const handleCloseModalPanel = () => {
+    // setTaskInput(taskInput);
+    //issue: set the input to empty
     if (onCloseModal) onCloseModal();
   };
   //handles the useState of my showIcon

@@ -232,6 +232,10 @@
   overflow: auto;
   height: 400px;
 }
+.text-strikethrough {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
 @media screen and (max-width: 428px) {
   .right-panel-lists {
     width: 300px;

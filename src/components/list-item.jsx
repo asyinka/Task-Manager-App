@@ -5,11 +5,12 @@ const ListItem = ({
   handleDeleteTask,
   toggleCheck,
   badge,
+  taskStatus,
 }) => {
   return (
     <div className="listItem">
       <input type="checkbox" onChange={toggleCheck} className="check-icon" />
-      <p>{taskDescription}</p>
+      <p className={taskStatus && "text-strikethrough"}>{taskDescription}</p>
       <span onClick={handleDeleteTask}>
         <MdDeleteOutline color="crimson" size={"24px"} />
       </span>

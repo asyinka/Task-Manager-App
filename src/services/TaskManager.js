@@ -48,4 +48,9 @@ export default class TaskManager {
 
     return unCompletedTask;
   }
+  clearCompletedTasks() {
+    const completedTasks = this.tasksList.filter(
+      (task) => task.isCompleted == true
+    );
+  }
 }
