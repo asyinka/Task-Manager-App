@@ -1,4 +1,4 @@
-# Task-Manager-App
+<h1> Task Manager Application </h1>
 
 <header>
 
@@ -48,13 +48,15 @@ So far, the App can:
 
 ## Problems/issues
 
-    - Font color for the footer text such that only the color of the clicked footer is changed
-    - The checkbox keps taking the state of the first task either checked or unchecked after clicking the footer
-    - when modal panel is cancel, the input and category isn't cleared
+    This project contains unresolved issues stated below:
 
-## To be addressed
+    - Font color of the footer text - only the color of the clicked footer is meant to change to white. But the font color of all footer elements changes to white once one of them is clicked.
+    - The checkbox keps taking the state of the first task (either checked or unchecked) after clicking the footer or re-rendering.
+    - when modal panel is cancelled, task input and category isn't cleared
 
-- ~~Set input to take atleast a word~~ - [x]
+## To be addressed later on
+
+- ~~Set input to take atleast a word~~ -[x]
 - properly style the U.I to taste
 
 </Article>
