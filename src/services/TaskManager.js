@@ -3,6 +3,7 @@ export default class TaskManager {
     this.tasksList = [];
     this.lastId = 0;
   }
+
   createTask(description, category) {
     const task = {
       description: description,
@@ -12,10 +13,12 @@ export default class TaskManager {
     };
     this.tasksList.push(task);
   }
+
   getTasksList() {
     // console.log(this.tasksList);
     return this.tasksList;
   }
+
   toggleTaskStatus(id) {
     const taskIndex = this.tasksList.findIndex((task) => task.id === id);
 
@@ -27,6 +30,7 @@ export default class TaskManager {
     //this reurns true if isCompleted is true and vice versa
     // foundTask.isCompleted ? true : false;
   }
+
   deleteTask(task) {
     const taskIndex = this.tasksList.indexOf(task);
 
@@ -34,6 +38,7 @@ export default class TaskManager {
 
     return this.tasksList;
   }
+
   filterCompletedTask() {
     const completedTask = this.tasksList.filter(
       (task) => task.isCompleted == true
@@ -41,6 +46,7 @@ export default class TaskManager {
 
     return completedTask;
   }
+
   filterUncompletedTask() {
     const unCompletedTask = this.tasksList.filter(
       (task) => task.isCompleted == false
@@ -48,6 +54,7 @@ export default class TaskManager {
 
     return unCompletedTask;
   }
+
   clearCompletedTasks() {
     const completedTasks = this.tasksList.filter(
       (task) => task.isCompleted == true

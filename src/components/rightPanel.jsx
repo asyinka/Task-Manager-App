@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
 import Button from "./button";
 import ListItem from "./list-item";
 import ModalPanel from "./modalPanel";
 import TaskManager from "../services/TaskManager";
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import Badge from "./badge";
-import "react-toastify/dist/ReactToastify.css";
-import { toast } from "react-toastify";
 import FooterTag from "../services/footerTag";
-const myTaskManager = new TaskManager("");
 
+const myTaskManager = new TaskManager();
 const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
 const footerTags = ["Active", "All", "Completed"];
 
@@ -72,10 +73,6 @@ const RightPanel = () => {
     fetchAllTasks();
   };
 
-  // function setShowIcon(currCat) {
-  //   category == currCat ? true : false;
-  // }
-
   const fetchAllTasks = () => {
     const myTaskLists = myTaskManager.getTasksList();
 
@@ -100,7 +97,7 @@ const RightPanel = () => {
         >
           Add new task
         </Button>
-        <span className="header__item">Clear Completed</span>
+        <span className="header__item clear-item">Clear Completed</span>
       </div>
       <div className="right-panel-lists panel--light">
         {tasksLists.length == 0 ? (
