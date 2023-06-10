@@ -1,31 +1,10 @@
-const FooterTag = ({
-  displayActiveTask,
-  displayCompletedTasks,
-  fetchAllTasks,
-  children,
-  footerFontColor = false,
-}) => {
-  let onTagClick = "";
-
-  switch (children) {
-    case "All":
-      onTagClick = fetchAllTasks;
-      break;
-    case "Completed":
-      onTagClick = displayCompletedTasks;
-      break;
-    case "Active":
-      onTagClick = displayActiveTask;
-      break;
-    default:
-      break;
-  }
+const FooterTag = ({ tag, isActive = false, onClick }) => {
   return (
     <span
-      onClick={onTagClick}
-      className={`footer-tag ${footerFontColor && "light-footer-tag"}`}
+      onClick={() => onClick && onClick()}
+      className={`footer-tag ${isActive && "light-footer-tag"}`}
     >
-      {children}
+      {tag.label}
     </span>
   );
 };

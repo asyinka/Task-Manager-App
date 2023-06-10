@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
@@ -12,7 +12,11 @@ import FooterTag from "../services/footerTag";
 
 const myTaskManager = new TaskManager();
 const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
-const footerTags = ["Active", "All", "Completed"];
+const footerFilters = [
+  { label: "Active" },
+  { label: "All" },
+  { label: "Completed" },
+];
 
 let tagType = "";
 
@@ -21,12 +25,11 @@ const RightPanel = () => {
   const [taskInput, setTaskInput] = useState("");
   const [tasksLists, setTasksList] = useState([]);
   const [category, setCategory] = useState();
-  const [footerFontColor, setFooterFontColor] = useState();
+  const [activeFilter, setActiveFilter] = useState("All");
 
   const displayActiveTask = () => {
     //accept uncompleted arrays and pass it into the tasksList
     const unCompletedTasks = myTaskManager.filterUncompletedTask();
-
     setTasksList([...unCompletedTasks]);
   };
 
@@ -50,6 +53,18 @@ const RightPanel = () => {
     myTaskManager.deleteTask(task);
 
     fetchAllTasks();
+  };
+
+  const handleFilter = (tag) => {
+    setActiveFilter(tag.label);
+
+    if (tag.label === "Active") {
+      displayActiveTask();
+    } else if (tag.label === "Completed") {
+      displayCompletedTasks();
+    } else {
+      fetchAllTasks();
+    }
   };
 
   const handleFormSubmission = (e) => {
@@ -83,6 +98,10 @@ const RightPanel = () => {
     // console.log(myTaskLists);
   };
 
+  useEffect(() => {
+    fetchAllTasks();
+  }, []);
+
   return (
     <div className="right-panel">
       <div className="right-panel-header panel--light">
@@ -110,11 +129,9 @@ const RightPanel = () => {
             <div className="tasks-lists">
               {tasksLists.map((task, index) => (
                 <ListItem
-                  badge={<Badge category={task.category} tagType={tagType} />}
-                  taskStatus={task.isCompleted}
-                  taskDescription={task.description}
+                  task={task}
                   key={index}
-                  handleDeleteTask={() => handleDeleteTask(task)}
+                  onDeleteTask={() => handleDeleteTask(task)}
                   toggleCheck={() => toggleCheck(task.id)}
                 />
               ))}
@@ -133,17 +150,17 @@ const RightPanel = () => {
           </span>
         </div> */}
         <div className="footer">
-          {footerTags.map((tag) => (
-            <span key={tag} onClick={() => setFooterFontColor(true)}>
-              <FooterTag
-                displayActiveTask={displayActiveTask}
-                displayCompletedTasks={displayCompletedTasks}
-                fetchAllTasks={fetchAllTasks}
-                footerFontColor={footerFontColor}
-              >
-                {tag}
-              </FooterTag>
-            </span>
+          {footerFilters.map((tag) => (
+            <FooterTag
+              key={tag.label}
+              // displayActiveTask={displayActiveTask}
+              // displayCompletedTasks={displayCompletedTasks}
+              // fetchAllTasks={fetchAllTasks}
+              // footerFontColor={footerFontColor}
+              onClick={() => handleFilter(tag)}
+              tag={tag}
+              isActive={activeFilter === tag.label}
+            />
           ))}
 
           {/* <FooterTag onTagClick={fetchAllTasks} footerTag={footerTag}>

@@ -2,6 +2,8 @@ export default class TaskManager {
   constructor() {
     this.tasksList = [];
     this.lastId = 0;
+
+    this.#retrieveFromDB();
   }
 
   createTask(description, category) {
@@ -12,6 +14,8 @@ export default class TaskManager {
       category: category,
     };
     this.tasksList.push(task);
+
+    this.#storeInDB();
   }
 
   getTasksList() {
@@ -29,6 +33,8 @@ export default class TaskManager {
     foundTask.isCompleted = !foundTask.isCompleted;
     //this reurns true if isCompleted is true and vice versa
     // foundTask.isCompleted ? true : false;
+
+    this.#storeInDB();
   }
 
   deleteTask(task) {
@@ -59,5 +65,23 @@ export default class TaskManager {
     const completedTasks = this.tasksList.filter(
       (task) => task.isCompleted == true
     );
+
+    this.#storeInDB();
+  }
+
+  #storeInDB() {
+    //this is where we will store the tasks in the database
+    window.localStorage.setItem("TASK_MANAGER", JSON.stringify(this.tasksList))
+  }
+
+  #retrieveFromDB() {
+    //this is where we will store the tasks in the database
+    const TASKS_STRING = window.localStorage.getItem("TASK_MANAGER")
+    if (!TASKS_STRING) {
+      this.tasksList = [];
+    } else {
+      this.tasksList = JSON.parse(TASKS_STRING);
+      this.lastId = this.tasksList.length;
+    }
   }
 }
