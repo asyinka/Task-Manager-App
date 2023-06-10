@@ -1,6 +1,6 @@
 import { MdCancel } from "react-icons/md";
 import Badge from "./badge";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
@@ -9,6 +9,8 @@ const ModalPanel = ({
   isModalOpen = false,
   onCloseModal,
   onFormSubmission,
+  // isEditMode = false,
+  // task
 }) => {
   const [taskInput, setTaskInput] = useState("");
   const [category, setCategory] = useState("");
@@ -35,6 +37,13 @@ const ModalPanel = ({
     setCategory("");
     onFormSubmission && onFormSubmission(taskInput, category);
   };
+
+  // useEffect(() => {
+  //   if (!isEditMode) return;
+
+  //   setCategory(task.category);
+  //   setTaskInput(task.description);
+  // }, [isEditMode, task]);
 
   return (
     <div

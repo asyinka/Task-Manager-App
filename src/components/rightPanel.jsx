@@ -67,6 +67,10 @@ const RightPanel = () => {
 
   const handleFormSubmission = (taskDescription, category) => {
     setIsModalOpen(false);
+    // check if isEditMode
+    // get the taskToBeEdited
+    // call the function to edit task
+    // else create new task
     myTaskManager.createTask(taskDescription, category);
     fetchAllTasks();
   };
@@ -84,6 +88,14 @@ const RightPanel = () => {
   const handleClearCompletedTasks = () => {
     myTaskManager.clearCompletedTasks();
     fetchAllTasks();
+  };
+
+  const handleStartEditTask = (task) => {
+    // assume this state: isEditMode = false;
+    // assume this state: taskToBeEdited;
+    // setEditMode(true)
+    // setTaskToBeEdited(task)
+    // openModal
   };
 
   useEffect(() => {
@@ -168,6 +180,8 @@ const RightPanel = () => {
         isModalOpen={isModalOpen}
         onCloseModal={() => setIsModalOpen(false)}
         onFormSubmission={handleFormSubmission}
+        // isEditMode=false
+        // task (not required)
       />
     </div>
   );
