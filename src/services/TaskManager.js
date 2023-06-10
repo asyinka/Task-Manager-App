@@ -41,7 +41,8 @@ export default class TaskManager {
     const taskIndex = this.tasksList.indexOf(task);
 
     this.tasksList.splice(taskIndex, 1);
-
+    this.#storeInDB();
+    
     return this.tasksList;
   }
 
@@ -62,9 +63,11 @@ export default class TaskManager {
   }
 
   clearCompletedTasks() {
-    const completedTasks = this.tasksList.filter(
-      (task) => task.isCompleted == true
+    const unCompletedTasks = this.tasksList.filter(
+      (task) => task.isCompleted !== true
     );
+
+    this.tasksList = [...unCompletedTasks];
 
     this.#storeInDB();
   }

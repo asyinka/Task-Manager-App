@@ -22,9 +22,7 @@ let tagType = "";
 
 const RightPanel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [taskInput, setTaskInput] = useState("");
   const [tasksLists, setTasksList] = useState([]);
-  const [category, setCategory] = useState();
   const [activeFilter, setActiveFilter] = useState("All");
 
   const displayActiveTask = () => {
@@ -41,11 +39,11 @@ const RightPanel = () => {
 
   //this toggles the status of the task whether completed or not
   //is checked is set to true pending when checkBox is resolved
-  const toggleCheck = (id) => {
+  const toggleCheck = (task) => {
     //debug
     // console.log(tasksLists);
 
-    myTaskManager.toggleTaskStatus(id);
+    myTaskManager.toggleTaskStatus(task.id);
     fetchAllTasks();
   };
 
@@ -67,24 +65,9 @@ const RightPanel = () => {
     }
   };
 
-  const handleFormSubmission = (e) => {
-    e.preventDefault();
-    //set the input to always contain atleast a word and pick a category
-    if (taskInput.length < 2 || category == "") {
-      toast("You have to add a valid task and category", {
-        position: "top-left",
-      });
-      return;
-    }
-
+  const handleFormSubmission = (taskDescription, category) => {
     setIsModalOpen(false);
-
-    myTaskManager.createTask(taskInput, category);
-
-    setTaskInput("");
-
-    setCategory("");
-
+    myTaskManager.createTask(taskDescription, category);
     fetchAllTasks();
   };
 
@@ -96,6 +79,11 @@ const RightPanel = () => {
     setTasksList([...myTaskLists]);
 
     // console.log(myTaskLists);
+  };
+
+  const handleClearCompletedTasks = () => {
+    myTaskManager.clearCompletedTasks();
+    fetchAllTasks();
   };
 
   useEffect(() => {
@@ -116,7 +104,12 @@ const RightPanel = () => {
         >
           Add new task
         </Button>
-        <span className="header__item clear-item">Clear Completed</span>
+        <span
+          className="header__item clear-item"
+          onClick={handleClearCompletedTasks}
+        >
+          Clear Completed
+        </span>
       </div>
       <div className="right-panel-lists panel--light">
         {tasksLists.length == 0 ? (
@@ -131,8 +124,8 @@ const RightPanel = () => {
                 <ListItem
                   task={task}
                   key={index}
-                  onDeleteTask={() => handleDeleteTask(task)}
-                  toggleCheck={() => toggleCheck(task.id)}
+                  onDeleteTask={handleDeleteTask}
+                  toggleCheck={toggleCheck}
                 />
               ))}
             </div>
@@ -173,16 +166,8 @@ const RightPanel = () => {
       </div>
       <ModalPanel
         isModalOpen={isModalOpen}
-        categories={categories}
-        category={category}
-        setCategory={setCategory}
-        tagType={tagType}
         onCloseModal={() => setIsModalOpen(false)}
-        handleFormSubmission={handleFormSubmission}
-        setTaskInput={(e) => {
-          setTaskInput(e.target.value);
-        }}
-        taskInput={taskInput}
+        onFormSubmission={handleFormSubmission}
       />
     </div>
   );

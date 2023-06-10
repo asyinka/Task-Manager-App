@@ -6,14 +6,14 @@ const ListItem = ({ task, onDeleteTask, toggleCheck, badge }) => {
     <div className="listItem">
       <input
         type="checkbox"
-        onChange={toggleCheck}
+        onChange={() => toggleCheck(task)}
         checked={task.isCompleted}
         className="check-icon"
       />
-      <p className={task.isCompleted && "text-strikethrough"}>
+      <p className={task.isCompleted ? "text-strikethrough" : ""}>
         {task.description}
       </p>
-      <span onClick={onDeleteTask}>
+      <span onClick={() => onDeleteTask(task)}>
         <MdDeleteOutline color="crimson" size={"24px"} />
       </span>
       <Badge category={task.category} tagType={task.category} />

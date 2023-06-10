@@ -1,17 +1,18 @@
 import { MdCancel } from "react-icons/md";
 import Badge from "./badge";
+import { useState } from "react";
+import { toast } from "react-toastify";
+
+const categories = ["Urgent", "Important", "Later", "To Study", "Completed"];
 
 const ModalPanel = ({
   isModalOpen = false,
   onCloseModal,
-  handleFormSubmission,
-  taskInput,
-  setTaskInput,
-  categories,
-  tagType,
-  setCategory,
-  category,
+  onFormSubmission,
 }) => {
+  const [taskInput, setTaskInput] = useState("");
+  const [category, setCategory] = useState("");
+
   //this handles the display of the modal panel
   const handleCloseModalPanel = () => {
     // setTaskInput(taskInput);
@@ -20,6 +21,20 @@ const ModalPanel = ({
   };
   //handles the useState of my showIcon
   // const [showIcon, setShowIcon] = useState(false);
+
+  const handleFormSubmission = (e) => {
+    e.preventDefault();
+    //set the input to always contain atleast a word and pick a category
+    if (taskInput.length < 2 || !category) {
+      toast("You have to add a valid task and category", {
+        position: "top-left",
+      });
+      return;
+    }
+    setTaskInput("");
+    setCategory("");
+    onFormSubmission && onFormSubmission(taskInput, category);
+  };
 
   return (
     <div
@@ -37,7 +52,7 @@ const ModalPanel = ({
           type="text"
           placeholder="Task description..."
           value={taskInput}
-          onChange={setTaskInput}
+          onChange={(e) => setTaskInput(e.target.value)}
         />
         <div className="form-categories">
           <hr className="line form-categories-line" /> Categories
@@ -53,7 +68,7 @@ const ModalPanel = ({
             >
               <Badge
                 category={curCategory}
-                tagType={tagType}
+                tagType={curCategory}
                 showIcon={category == curCategory ? true : false}
               />
             </div>
